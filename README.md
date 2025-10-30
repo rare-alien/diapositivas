@@ -1,2 +1,0 @@
-# diapositivas
-conflicto organizacional
