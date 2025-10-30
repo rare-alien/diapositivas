@@ -5,21 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Análisis Interactivo: Conflicto en Producción</title>
     
-    <!-- 
-        Chosen Palette: Calm Neutrals (Fondo: bg-gray-100, Contenido: bg-white, Acentos: text-blue-700, Gráfico: bg-blue-600)
-        
-        Application Structure Plan: He diseñado una SPA temática de una sola página en lugar de una presentación lineal. La estructura se divide en 4 secciones lógicas a las que se accede por scroll o un encabezado fijo: 1. El Problema (Descripción e Impacto/KPIs), 2. Las Perspectivas (Comparación interactiva de posturas), 3. La Solución (Proceso y Acuerdos), 4. La Conclusión (Lecciones). Esta arquitectura es superior a la de las diapositivas porque agrupa el contenido por su función (diagnóstico, análisis de causa raíz, resolución) y permite al usuario explorar el caso de forma no lineal, facilitando una comprensión más profunda. La interactividad (gráfica y pestañas) está diseñada para resaltar las áreas clave: el impacto en el negocio y la raíz del conflicto (las dos versiones).
-        
-        Visualization & Content Choices: 
-        - Info: KPIs (Slide 3) -> Goal: Informar/Comparar -> Viz: Gráfica de Barras Horizontales (Chart.js/Canvas) -> Interaction: Tooltip al pasar el mouse -> Justification: Muestra visualmente la magnitud del impacto negativo en el negocio. Los datos (-30%, +25%, etc.) se infieren para dar vida a los KPIs. `indexAxis: 'y'` se usa para legibilidad de las etiquetas.
-        - Info: Posturas Jefe vs Operarios (Slides 4, 5) -> Goal: Comparar -> Viz: Pestañas Interactivas (HTML/CSS/JS) -> Interaction: Clic para cambiar de vista -> Justification: Es la forma más directa y atractiva de comparar las dos perspectivas opuestas, que son el núcleo del conflicto.
-        - Info: Proceso de Mediación (Slide 7) -> Goal: Organizar/Informar -> Viz: Diagrama de Pasos (HTML/CSS/Tailwind) -> Interaction: Estático -> Justification: Presenta el flujo del proceso de forma clara y secuencial sin necesidad de librerías.
-        - Info: Demandas (Slide 6) -> Goal: Comparar -> Viz: Diseño de 2 Columnas (HTML/Tailwind) -> Justification: Contraste visual simple y efectivo.
-        - Info: Resto del texto (Slides 1, 2, 8, 9) -> Goal: Informar -> Viz: Bloques de texto HTML/Tailwind -> Justification: Contenido textual estándar.
-        
-        CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
-    -->
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <style>
@@ -54,10 +39,15 @@
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-    <!-- Encabezado Fijo de Navegación -->
     <header class="sticky top-0 bg-white shadow-md z-50">
         <nav class="container mx-auto max-w-6xl px-6 py-3 flex justify-between items-center">
-            <h1 class="text-xl font-bold text-blue-800">Conflicto en Producción</h1>
+            
+            <div class="flex items-center space-x-3">
+                <img src="image_d77f5d.png" alt="Logo Instituto Tecnológico Superior de Comalcalco" class="h-12 w-auto"> <div>
+                    <h1 class="text-xl font-bold text-blue-800">Conflicto en Producción</h1>
+                    <p class="text-sm text-gray-600 hidden sm:block">Instituto Tecnológico Superior de Comalcalco</p>
+                </div>
+            </div>
             <div class="hidden md:flex space-x-6">
                 <a href="#problema" class="text-gray-600 hover:text-blue-700 font-medium">El Problema</a>
                 <a href="#perspectivas" class="text-gray-600 hover:text-blue-700 font-medium">Las Perspectivas</a>
@@ -67,10 +57,8 @@
         </nav>
     </header>
 
-    <!-- Contenido Principal -->
     <main class="container mx-auto max-w-6xl p-4 md:p-8">
 
-        <!-- SECCIÓN 1: EL PROBLEMA -->
         <section id="problema" class="mb-12 scroll-mt-20">
             <h2 class="text-3xl font-bold text-blue-900 mb-4">El Problema: Diagnóstico Inicial</h2>
             <p class="text-lg text-gray-700 mb-8">
@@ -78,7 +66,6 @@
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Descripción del Caso -->
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4">Tensión en la Fábrica</h3>
                     <ul class="space-y-3 list-disc list-outside ml-5 text-gray-700">
@@ -88,7 +75,6 @@
                     </ul>
                 </div>
 
-                <!-- Consecuencias Críticas -->
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4">Consecuencias Críticas (KPIs)</h3>
                     <p class="text-sm text-gray-600 mb-4">Gráfica interactiva que visualiza el impacto negativo en el negocio.</p>
@@ -99,14 +85,12 @@
             </div>
         </section>
 
-        <!-- SECCIÓN 2: LAS PERSPECTIVAS (Causa Raíz) -->
         <section id="perspectivas" class="mb-12 scroll-mt-20">
             <h2 class="text-3xl font-bold text-blue-900 mb-4">Las Perspectivas: Causa Raíz</h2>
             <p class="text-lg text-gray-700 mb-8">
                 Para entender el origen del conflicto, fue crucial investigar ambas posturas. Esta sección permite comparar interactivamente la visión del jefe con las causas ocultas reveladas por los operarios, seguidas de las demandas irreconciliables de cada parte.
             </p>
 
-            <!-- Pestañas Interactivas -->
             <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
                 <div class="border-b border-gray-200 mb-4">
                     <nav class="flex -mb-px space-x-6">
@@ -119,7 +103,6 @@
                     </nav>
                 </div>
 
-                <!-- Contenido Pestaña Jefe -->
                 <div id="contentJefe" class="tab-content">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
@@ -139,7 +122,6 @@
                     </div>
                 </div>
                 
-                <!-- Contenido Pestaña Operarios -->
                 <div id="contentOperarios" class="tab-content" style="display: none;">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
@@ -162,7 +144,6 @@
                 </div>
             </div>
 
-            <!-- Puntos de Quiebre -->
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Puntos de Quiebre: Exigencias Mutuas</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -186,7 +167,6 @@
                 </div>
             </div>
 
-            <!-- NUEVA SECCIÓN IA: Analizar Exigencias -->
             <div class="mt-8 bg-white p-6 rounded-lg shadow-lg text-center">
                 <h3 class="text-xl font-semibold text-gray-800 mb-4">Asistente de Mediación</h3>
                 <p class="text-gray-600 mb-4">Usa la IA para analizar las exigencias de ambas partes y encontrar un punto de partida para la negociación.</p>
@@ -199,7 +179,6 @@
 
         </section>
 
-        <!-- SECCIÓN 3: LA SOLUCIÓN -->
         <section id="solucion" class="mb-12 scroll-mt-20">
             <h2 class="text-3xl font-bold text-blue-900 mb-4">La Solución: Mediación y Acuerdos</h2>
             <p class="text-lg text-gray-700 mb-8">
@@ -207,7 +186,6 @@
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Proceso de Mediación -->
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4">Proceso: La Mediación</h3>
                     <p class="text-gray-600 mb-4">Se utilizó una guía imparcial para facilitar el diálogo.</p>
@@ -230,7 +208,6 @@
                     </div>
                 </div>
 
-                <!-- Acuerdos Logrados -->
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4">Acuerdos Logrados</h3>
                     <ul id="listaAcuerdos" class="list-disc list-outside ml-5 space-y-3 text-gray-700">
@@ -242,7 +219,6 @@
                         <li>Se implementará un reconocimiento: <span class="font-semibold">"Empleado del Mes"</span>.</li>
                     </ul>
 
-                    <!-- NUEVO BOTÓN IA: Generar Borrador -->
                     <div class="mt-6 text-center border-t pt-6">
                         <button id="btnGenerarAnuncio" class="bg-green-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-green-700 transition-colors inline-flex items-center">
                             <span class="mr-2">✨ Generar Borrador de Anuncio (IA)</span>
@@ -253,7 +229,6 @@
             </div>
         </section>
 
-        <!-- SECCIÓN 4: CONCLUSIÓN -->
         <section id="conclusion" class="mb-12 scroll-mt-20">
             <h2 class="text-3xl font-bold text-blue-900 mb-4">Conclusión: Lecciones Aprendidas</h2>
             <p class="text-lg text-gray-700 mb-8">
@@ -290,10 +265,10 @@
     </main>
 
     <footer class="text-center p-6 bg-gray-800 text-gray-300 mt-12">
-        <p>&copy; 2024 Análisis de Productividad Humana | ITS Comalcalco. Esta es una SPA de demostración.</p>
+        <p class="mb-2"><strong>Autor:</strong> Oscar Flores Cruz</p>
+        <p class="text-sm mb-4"><strong>Fecha de Creación:</strong> 30 de octubre de 2025</p>
+        <p class="text-xs">&copy; 2025 Análisis de Productividad Humana | Esta es una SPA de demostración.</p>
     </footer>
-
-    <!-- NUEVO MODAL PARA RESPUESTA DE IA -->
     <div id="iaModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-lg shadow-xl max-w-lg w-full">
             <div class="flex justify-between items-center border-b p-4">
@@ -301,8 +276,7 @@
                 <button id="closeModal" class="text-gray-500 hover:text-gray-800 text-2xl">&times;</button>
             </div>
             <div id="modalBody" class="p-6 text-gray-700 overflow-y-auto" style="max-height: 60vh;">
-                <!-- Contenido de IA se insertará aquí -->
-            </div>
+                </div>
             <div class="border-t p-4 bg-gray-50 text-right rounded-b-lg">
                 <button id="closeModalBtn" class="bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors">Cerrar</button>
             </div>
@@ -558,4 +532,3 @@
 
 </body>
 </html>
-
